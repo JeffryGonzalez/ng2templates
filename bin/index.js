@@ -5,14 +5,14 @@ const vorpal = require('vorpal')();
 const fs = require('fs');
 const mkpath = require('mkpath');
 const hb = require('handlebars');
-const rootPath = require('app-root-path').path;
+
 const path = require('path');
 
 
 vorpal
   .command('component <name> [path]', "Creates a component of <name> at [path]. If path is not specified, it will be in /src/app ")
   .action((args, cb) => {
-    console.log(rootPath);
+
     const self = this,
       component = args.name,
       componentl = args.name.toLowerCase();
