@@ -16,8 +16,8 @@ vorpal
     const self = this,
       component = args.name,
       componentl = args.name.toLowerCase();
-     let srcPath = args.srcPath || '/src/app';
-     srcPath = path.join(rootPath, srcPath);
+    let srcPath = args.srcPath || '/src/app';
+    srcPath = path.join(process.cwd(), srcPath);
 
 
     console.log(`Creating ${component} at ${srcPath}`);
@@ -29,7 +29,7 @@ vorpal
 
       createFile('ts', component, srcPath);
       createFile('css', component, srcPath);
-      createFile('html', component,srcPath);
+      createFile('html', component, srcPath);
       createFile('spec', component, srcPath);
 
       console.log(`Component ${component} created. Party on.`);
