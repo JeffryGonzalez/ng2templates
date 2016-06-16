@@ -1,6 +1,6 @@
 {
   "name": "@jeffrygonzalez/ng2templates",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Templates for Angular 2 ",
   "main": "index.js",
   "scripts": {
