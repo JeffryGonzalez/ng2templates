@@ -6,6 +6,7 @@ const fs = require('fs');
 const mkpath = require('mkpath');
 const hb = require('handlebars');
 const rootPath = require('app-root-path').path;
+const path = require('path');
 
 
 vorpal
@@ -15,21 +16,21 @@ vorpal
     const self = this,
       component = args.name,
       componentl = args.name.toLowerCase();
-    let path = args.path || '/src/app';
+     let srcPath = args.srcPath || '/src/app';
+     srcPath = path.join(rootPath, srcPath);
 
-    path = rootPath + path;
 
-    console.log(`Creating ${component} at ${path}`);
-    mkpath(path + '/' + componentl, (err, done) => {
+    console.log(`Creating ${component} at ${srcPath}`);
+    mkpath(srcPath + '/' + componentl, (err, done) => {
       if (err) {
         console.log(err);
         return;
       }
 
-      createFile('ts', component, path);
-      createFile('css', component, path);
-      createFile('html', component, path);
-      createFile('spec', component, path);
+      createFile('ts', component, srcPath);
+      createFile('css', component, srcPath);
+      createFile('html', component,srcPath);
+      createFile('spec', component, srcPath);
 
       console.log(`Component ${component} created. Party on.`);
     });
@@ -40,15 +41,17 @@ vorpal
 vorpal.delimiter('scaffold$')
   .show();
 
-function createFile(templateType, component, path) {
+function createFile(templateType, component, srcPath) {
   let templateName = templateType + '.txt';
-  const templatePath = __dirname + '/templates/components/';
-  let ts = fs.readFileSync(templatePath + templateName, { encoding: 'utf8' });
+  const templatePath = path.join(__dirname, 'templates', 'components', templateName);
+  let ts = fs.readFileSync(templatePath, { encoding: 'utf8' });
   let tst = hb.compile(ts);
   let componentl = component.toLowerCase();
   let tsc = tst({ component, componentl });
   if (templateType == 'spec') {
     templateType = templateType + ".ts";
   }
-  fs.writeFileSync(path + '/' + componentl + '/' + componentl + '.component.' + templateType, tsc);
+  let writePath = path.join(srcPath, componentl, componentl + '.component.' + templateType);
+  console.log("writing to", writePath);
+  fs.writeFileSync(writePath, tsc);
 }
