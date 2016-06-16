@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+
+@Component({
+  selector: 'my-{{componentl}}',
+  template: require('./{{componentl}}.component.html'),
+  styles: [require('./{{componentl}}.component.css')]
+})
+export class {{component}}Component { }

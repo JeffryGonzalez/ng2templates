@@ -1,0 +1,20 @@
+import {
+  it,
+  inject,
+  describe,
+  beforeEachProviders,
+  expect
+} from '@angular/core/testing';
+
+import { {{component}}Component } from './{{componentl}}.component';
+
+describe('App', () => {
+  beforeEachProviders(() => [
+    {{component}}Component
+  ]);
+
+  it ('should work', inject([{{component}}Component], (app: {{component}}Component) => {
+    // Add real test here
+    expect(2).toBe(3);
+  }));
+});

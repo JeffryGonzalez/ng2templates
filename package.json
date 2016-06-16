@@ -1,0 +1,21 @@
+{
+  "name": "ng2templates",
+  "version": "1.0.0",
+  "description": "Templates for Angular 2 ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular2",
+    "templates"
+  ],
+  "author": "Jeff Gonzalez <jeff@hypertheory.com>",
+  "license": "MIT",
+  "dependencies": {
+    "config": "^1.21.0",
+    "handlebars": "^4.0.5",
+    "mkpath": "^1.0.0",
+    "vorpal": "^1.11.2"
+  }
+}
