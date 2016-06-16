@@ -42,7 +42,7 @@ vorpal.delimiter('scaffold$')
 
 function createFile(templateType, component, path) {
   let templateName = templateType + '.txt';
-  const templatePath = './templates/components/';
+  const templatePath = __dirname + '/templates/components/';
   let ts = fs.readFileSync(templatePath + templateName, { encoding: 'utf8' });
   let tst = hb.compile(ts);
   let componentl = component.toLowerCase();
